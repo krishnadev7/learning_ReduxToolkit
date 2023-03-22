@@ -9,8 +9,12 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: state => {
-      state.cartCount = 1;
+    addToCart: (state, action) => {
+    //   state.cartCount = 1;
+        state.cartList.push({
+            ...action.payload,
+            count: 1
+        })
     },
     increment: state => {
       state.cartCount += 1;
