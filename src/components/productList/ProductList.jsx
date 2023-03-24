@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './productList.css';
 import products from '../../api/products.json';
-import BeforeCartButtons from './cartButtons/BeforeCartButtons';
-import AfterCartButtons from './cartButtons/AfterCartButtons';
 import { useSelector } from 'react-redux';
 import CartButtons from './cartButtons';
 

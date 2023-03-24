@@ -6,7 +6,7 @@ import BeforeCartButtons from './BeforeCartButtons';
 const CartButtons = ({ product }) => {
   const { cartList } = useSelector(state => state.cart);
   const cartCount = cartList?.find(item => item?.id === product.id)?.count;
-  return <>{cartCount > 0 ? <AfterCartButtons product={product} cartCount={cartCount}/> : <BeforeCartButtons product={product}/>}</>;
+  return <>{cartCount > 0 ? <AfterCartButtons productId={product.id} cartCount={cartCount}/> : <BeforeCartButtons product={product}/>}</>;
 };
 
 export default CartButtons;

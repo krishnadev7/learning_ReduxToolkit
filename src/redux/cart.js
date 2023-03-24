@@ -10,17 +10,37 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-    //   state.cartCount = 1;
-        state.cartList.push({
-            ...action.payload,
-            count: 1
-        })
+      const itemExist = state.cartList.find(
+        item => item.id === action.payload.id
+      );
+      if (itemExist) {
+        state.cartList.forEach(item => {
+          if (item?.id === action.payload.id) {
+            item.count++;
+          }
+        });
+        return;
+      }
+      state.cartList.push({
+        ...action.payload,
+        count: 1,
+      });
     },
-    increment: state => {
-      state.cartCount += 1;
+    increment: (state, action) => {
+      const productId = action.payload;
+      state.cartList.forEach(item => {
+        if (item?.id === productId) {
+          item.count++;
+        }
+      });
     },
-    decrement: state => {
-      state.cartCount -= 1;
+    decrement: (state, action) => {
+      const productId = action.payload;
+      state.cartList.forEach(item => {
+        if (item?.id === productId) {
+          item.count--;
+        }
+      });
     },
   },
 });
